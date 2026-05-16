@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahinda Mahathya - Professional Minecraft Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Animations Definitions */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAvatar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(78, 217, 90, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(78, 217, 90, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(78, 217, 90, 0.4); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #eeeeee;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Premium Navigation */
+        header {
+            display: block;
+            padding: 20px 8%;
+            background-color: rgba(11, 12, 16, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #1f2833;
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            color: #4ed95a;
+            float: left;
+            text-shadow: 2px 2px #124e18;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            float: right;
+            margin-top: 5px;
+        }
+
+        nav a {
+            color: #c5c6c7;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4ed95a;
+        }
+
+        /* Animated underline for menu links */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #4ed95a;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 8% 80px 8%;
+            background: linear-gradient(135deg, #1f2833 0%, #0b0c10 100%);
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #4ed95a;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, rgba(78,217,90,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px auto;
+            border-radius: 12px;
+            border: 4px solid #4ed95a;
+            background-color: #55b3f3;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            animation: floatAvatar 4s ease-in-out infinite; /* Floating Animation */
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #85929E;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+            line-height: 1.6;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .btn-action {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 0 #990000;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.4);
+            background-color: #ff2222;
+        }
+
+        /* Content Container */
+        .container {
+            padding: 70px 8%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            border-left: 5px solid #4ed95a;
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        /* Worlds Section */
+        .world-showcase {
+            display: block;
+            margin-bottom: 60px;
+        }
+
+        .world-card {
+            width: 31%;
+            margin-right: 3.33%;
+            float: left;
+            background-color: #1f2833;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid #2e3944;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .world-card:last-child {
+            margin-right: 0;
+        }
+
+        .world-card:hover {
+            transform: translateY(-10px);
+            border-color: #4ed95a;
+            box-shadow: 0 12px 30px rgba(78, 217, 90, 0.25);
+        }
+
+        .world-img-placeholder {
+            height: 200px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-sunset { background: linear-gradient(to bottom, #f39c12, #2c3e50); }
+        .bg-cherry { background: linear-gradient(to bottom, #ff9ff3, #feca57); }
+        .bg-nature { background: linear-gradient(to bottom, #a8ff78, #78ffd6); }
+
+        .world-info {
+            padding: 20px;
+        }
+
+        .world-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #4ed95a;
+        }
+
+        .world-info p {
+            font-size: 13px;
+            color: #c5c6c7;
+            line-height: 1.5;
+        }
+
+        /* Video Showcase Section */
+        .video-row {
+            display: block;
+        }
+
+        .video-box {
+            width: 48%;
+            margin-right: 4%;
+            float: left;
+            background-color: #151b24;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #232d3b;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .video-box:nth-child(2n) {
+            margin-right: 0;
+        }
+
+        .video-box:hover {
+            transform: scale(1.02);
+            border-color: #4ed95a;
+            animation: pulseGlow 2s infinite; /* Pulsing Glow Effect */
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .video-desc {
+            padding: 20px;
+        }
+
+        .video-desc h4 {
+            font-size: 15px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* About Section */
+        .about-box {
+            background: #1f2833;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #2e3944;
+            text-align: center;
+            transition: border 0.3s;
+        }
+        
+        .about-box:hover {
+            border-color: #4ed95a;
+        }
+
+        .about-box p {
+            font-size: 15px;
+            color: #e5e5e5;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer Layout */
+        footer {
+            background-color: #0b0c10;
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 2px solid #1f2833;
+            color: #666666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .world-card {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 25px;
+            }
+            .video-box {
+                width: 100%;
+                margin-right: 0;
+            }
+            .logo { float: none; text-align: center; margin-bottom: 15px; }
+            nav { float: none; text-align: center; }
+            nav a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="clearfix">
+        <div class="nav-container">
+            <div class="logo">MAHINDA MAHATHYA</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#worlds">Worlds</a>
+                <a href="#videos">Videos</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="profile-container">
+            <svg class="profile-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" fill="#55b3f3"/>
+                <rect x="20" y="25" width="60" height="55" fill="#a17457"/>
+                <rect x="20" y="25" width="60" height="15" fill="#1a110b"/>
+                <rect x="28" y="45" width="12" height="8" fill="#ffffff"/>
+                <rect x="34" y="45" width="6" height="8" fill="#000000"/>
+                <rect x="60" y="45" width="12" height="8" fill="#ffffff"/>
+                <rect x="60" y="45" width="6" height="8" fill="#000000"/>
+                <rect x="44" y="53" width="12" height="8" fill="#1a110b"/>
+                <rect x="28" y="58" width="44" height="12" fill="#1a110b"/>
+                <rect x="20" y="80" width="60" height="20" fill="#ffffff"/>
+                <polygon points="35,80 50,95 65,80" fill="#cc1111"/>
+            </svg>
+        </div>
+        <h1>MAHINDA MAHATHYA GAMING</h1>
+        <p>Welcome to my official gaming space! Here you'll find exciting gameplay, fun highlights, tips, tricks, and gaming adventures in Minecraft.</p>
+        <a href="https://youtube.com/@mahindamahathya12?si=NNTxF3p-LXtQ7eRX" target="_blank" class="btn-action">SUBSCRIBE CHANNEL</a>
+    </section>
+
+    <section class="container" id="worlds">
+        <div class="section-header">
+            <h2>MY GAMEPLAY ENVIRONMENTS</h2>
+        </div>
+        <div class="world-showcase clearfix">
+            
+            <div class="world-card">
+                <div class="world-img-placeholder bg-sunset"></div>
+                <div class="world-info">
+                    <h3>Epic Sunset Horizons</h3>
+                    <p>Beautiful cinematic mountain ranges illuminated by golden hour lighting and high-end ray tracing shaders.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <div class="world-img-placeholder bg-cherry"></div>
+                <div class="world-info">
+                    <h3>Cherry Blossom Grove</h3>
+                    <p>A calm, dreamy, soft-focused aesthetic valley filled with blooming pink trees and peaceful nature vibes.</p>
+                </div>
+            </div>
+
+            <div class="world-card">
+                <div class="world-img-placeholder bg-nature"></div>
+                <div class="world-info">
+                    <h3>Secret Oasis Waterfall</h3>
+                    <p>Lush green vegetation, clean water reflections, and beautiful sugarcane farming setups next to natural cliffs.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container" id="videos">
+        <div class="section-header">
+            <h2>LATEST GAMEPLAY VIDEOS</h2>
+        </div>
+        <div class="video-row clearfix">
+            
+            <div class="video-box">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/L4DGE3cJgF4" allowfullscreen></iframe>
+                </div>
+                <div class="video-desc">
+                    <h4>Minecraft ඇතුලේ Car එකක් හදමු 🏎️ | Custom Vehicle Build</h4>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/1x1z8xAZq_w" allowfullscreen></iframe>
+                </div>
+                <div class="video-desc">
+                    <h4>Aesthetic Custom Trees හදන්න ඉගෙන ගමු 🌲 | Minecraft Tutorial</h4>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container" id="about">
+        <div class="section-header">
+            <h2>ABOUT MY CHANNEL</h2>
+        </div>
+        <div class="about-box">
+            <p>Hey there! Welcome to Mahinda Mahathya! Here you'll find exciting gameplay, fun highlights, tips, tricks, and gaming adventures. I create premium, immersive Minecraft gameplay videos focusing on high-quality graphics, stunning landscapes, survival builds, and aesthetic exploration.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mahinda Mahathya Gaming. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
